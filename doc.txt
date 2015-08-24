@@ -26,13 +26,16 @@ file that describes the training and testing splits that will be used
 for this data set, <fold-instance> is the index into the fold file to
 determine the actual training and testing split, and <alpha> is a
 value in [0,1] to designate the trade-off between ridge regression and
-the lasso (alpha=1 sets the behaviour to a full lasso method). Data
-sets for this application are simple tab-separated files, with one
-instance per line of the file, and the last column in the file
-representing the dependent variable. Fold files are tab-separated
-files in which each line contains the indices to the instances from
-the data set that will be used for TESTING (with the remaining
-instances split into the given training set).
+the lasso (alpha=1 sets the behaviour to a full lasso method). The
+#RNDFOLDS# argument is an optional parameter that, when supplied,
+switches the cross-validation to use randomly generated folds (the
+value of the argument is irrelevant so long as something is
+supplied). Data sets for this application are simple tab-separated
+files, with one instance per line of the file, and the last column in
+the file representing the dependent variable. Fold files are
+tab-separated files in which each line contains the indices to the
+instances from the data set that will be used for TESTING (with the
+remaining instances split into the given training set).
 
 CREATING YOUR OWN APPLICATIONS:
 The provided demo application should be enough of an example to get up
