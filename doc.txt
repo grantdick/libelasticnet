@@ -1,0 +1,46 @@
+COMPILING THE PROJECT:
+The project should compile on any platform with gcc (or similar) and
+make. It is designed to be self-contained and, beyond the standard C
+and POSIX libraries, should compile without any problems. To compile
+the base library and associated demo applications, please run:
+  make
+from the root directory of the project. This will create a handful of
+directories (specifically: build, dist, and include) under which the
+compiled outputs will be found (include contains the header files for
+the project, while the dist directory contains the library and
+associated executables).
+
+RUNNING THE DEMO APPLICATIONS:
+The project includes a demo application to demonstrate the use of the
+library and fitting a model using cross-validation of the training
+data to select hyperparameters (the source is found under the demo
+directory, and when compiled, the executable is found under the dist
+directory). The demo is run from the root of the project with the
+following arguments:
+
+   ./dist/cvelnet <data-file> <fold-file> <fold-instance> <alpha> #RNDFOLDS#
+
+where <data-file> is the path to the file that contains the data set
+upon which regression is performed, <fold-file> is the path to the
+file that describes the training and testing splits that will be used
+for this data set, <fold-instance> is the index into the fold file to
+determine the actual training and testing split, and <alpha> is a
+value in [0,1] to designate the trade-off between ridge regression and
+the lasso (alpha=1 sets the behaviour to a full lasso method). Data
+sets for this application are simple tab-separated files, with one
+instance per line of the file, and the last column in the file
+representing the dependent variable. Fold files are tab-separated
+files in which each line contains the indices to the instances from
+the data set that will be used for TESTING (with the remaining
+instances split into the given training set).
+
+CREATING YOUR OWN APPLICATIONS:
+The provided demo application should be enough of an example to get up
+and running with the code. To create your own programs, ensure that
+elasticnet.h is on the compile path (when make is run, this is in the
+include directory), and make sure that libelasticnet.a is available on
+the linking path at link time.
+
+HELP!:
+I'm happy to take questions/comments/bug fixes, etc., so please email
+grant.dick@otago.ac.nz if you have any queries.
